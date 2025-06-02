@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import './base.css';
+@import "tailwindcss";
+
+
+/* @theme {
+  --font-jarkata: "Plus Jarkata Sans", sans-serif; 
+} */
+
+#app {
+  width: 100%;
+  height: 100%;
+  margin: 0 0;
+}
+
