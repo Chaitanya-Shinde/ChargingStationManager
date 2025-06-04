@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 
+const API_URL = import.meta.env.VITE_API_URL
 export const useAuthStore = defineStore('auth', {
   state: () => ({
     user: null,
@@ -9,7 +10,7 @@ export const useAuthStore = defineStore('auth', {
     async login(credentials) {
       console.log("login credentialls: ", credentials);
 
-      const res = await fetch('http://localhost:5000/auth/login', {
+      const res = await fetch(`${API_URL}auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
@@ -25,7 +26,7 @@ export const useAuthStore = defineStore('auth', {
     },
     async register(credentials) {
       console.log("register credentialls: ", credentials);
-      const res = await fetch('http://localhost:5000/auth/register', {
+      const res = await fetch(`${API_URL}auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),

@@ -28,7 +28,7 @@
 
     </div>
 
-    <div class=" w-full h-[80%] flex mb-5">
+    <div class=" w-full h-[90%] flex mb-5">
       <div class="scrollable w-[40%] h-full bg-white rounded-l-xl rounded-tl-none mask overflow-auto">
         <div v-if="!showForm">
           <div v-for="st in station.stations" :key="st._id" class=" w-full h-auto  ">
