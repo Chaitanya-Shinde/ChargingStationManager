@@ -28,18 +28,17 @@
         </div>
       </div>
       <div class=" absolute right-0 bottom-0 z-10 w-fit h-auto flex flex-col justify-end gap-5 mb-2 mr-2">
-        <img
-          @click.stop="$emit('update', station)"
-          class=" w-8 h-8 z-10 cursor-pointer shadow-sm shadow-gray-300 rounded-sm p-1"
-          src="../assets/logo.svg"
-          alt="Update"
-        >
-        <img
-          @click.stop="$emit('delete', station)"
-          class=" w-8 h-8 z-10 cursor-pointer shadow-sm shadow-gray-300 rounded-sm p-1"
-          src="../assets/logo.svg"
-          alt="Delete"
-        >
+        <!-- @click.stop="$emit('update', station)"
+        class=" w-8 h-8 z-10 cursor-pointer shadow-sm shadow-gray-300 rounded-sm p-1" -->
+        <font-awesome-icon 
+        @click.stop="$emit('update', station)"
+        class=" w-5 h-8 z-10 cursor-pointer shadow-sm shadow-gray-300 rounded-sm p-1"
+        :icon="['fas', 'pen-to-square']" />
+        
+        <font-awesome-icon
+         @click.stop="$emit('delete', station)"
+         class=" w-5 h-8 z-10 cursor-pointer shadow-sm shadow-gray-300 rounded-sm p-1"
+         :icon="['fas', 'trash']" />
       </div>
     </div>
 

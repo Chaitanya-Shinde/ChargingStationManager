@@ -5,7 +5,8 @@
         <img src="../assets/authHero.png" alt="" srcset="">
       </div>
       <div class=" w-full h-full flex flex-col items-center justify-center ">
-          <h2 class="">Login</h2>
+          <h2 v-if="mode === 'login' " class=" text-lg font-medium mb-10">Welcome back</h2>
+          <h2 v-else class=" text-lg font-medium mb-10">Create your account</h2>
           <div id="btnContainer" class=" justify-center mb-6 space-x-4 ">
             <button
               :class="[

@@ -1,10 +1,18 @@
 <template>
   <div class="h-screen flex flex-col items-center bg-gray-100 px-10">
     <div class=" flex gap-20 ">
-      <div class=" w-50 h-10 bg-white"></div>
+      <div class=" w-50 h-10 bg-white flex justify-center items-center">logo goes here</div>
       <nav class="flex gap-16 p-3 font-medium bg-white rounded-b-xl drop-shadow-xl drop-shadow-blue-50">
         <RouterLink to="/" >Home</RouterLink>
-        <RouterLink :to="isLoggedIn ? '/' : '/auth/login'">{{ isLoggedIn ? 'Log Out' : 'Login' }}</RouterLink>
+        <RouterLink
+          v-if="isLoggedIn"
+          to="/"
+          @click.prevent="logout"
+        >Log Out</RouterLink>
+        <RouterLink
+          v-else
+          to="/auth/login"
+        >Login</RouterLink>
         <RouterLink to="#">Recently Viewed</RouterLink>
         <RouterLink to="#">Favourites</RouterLink>
         <RouterLink to="#">Help</RouterLink>
@@ -22,7 +30,7 @@
           ]"
           @click="!(showForm && activeFeature === feature) && handleFeatureClick(feature)"
         >
-          <img class="w-4 h-4" src="../assets/logo.svg" alt="Logo" />
+          <font-awesome-icon :icon="['fas', 'pen-to-square']" />
           <p>{{ feature }}</p>
         </div>
 
@@ -290,6 +298,16 @@ const handleFormSubmit = async () => {
 const handleFormCancel = () => {
   showForm.value = false
   activeFeature.value = null
+}
+
+const logout = () => {
+  localStorage.removeItem('token')
+  token.value = ''
+  isLoggedIn.value = false
+  selectedStation.value = null
+  showForm.value = false
+  activeFeature.value = null
+  // Optionally, you can also reload stations or redirect
 }
 
 onMounted(() => {

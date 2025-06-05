@@ -23,6 +23,19 @@ onMounted(() => {
   }).addTo(map)
 })
 
+function getCustomIcon(status) {
+  const color = status === 'Active' ? '#3b82f6' : '#dc2626' // blue or red
+  const markerIcon = `<span style="color: ${color}; font-size: 1.5rem"><i class="fa-solid fa-location-dot"></i></span>`
+
+  return L.divIcon({
+    html: markerIcon,
+    className: 'leaflet-marker-icon',
+    iconSize: [20, 20],
+    iconAnchor: [10, 20],
+    popupAnchor: [0, -20]
+  })
+}
+
 // Watch for station updates and refresh markers
 watch(
   stations,
@@ -34,7 +47,7 @@ watch(
     const stationList = Array.isArray(newStations) ? newStations : []
     stationList.forEach(station => {
       if (station.location) {
-        const marker = L.marker([station.location.latitude, station.location.longitude]).addTo(map)
+        const marker = L.marker([station.location.latitude, station.location.longitude], {icon: getCustomIcon(station.status) }).addTo(map)
         marker.bindPopup(`
           <b>${station.name}</b><br />
           Status: ${station.status}<br />
@@ -68,4 +81,9 @@ watch(
   width: 100%;
   height: 100%;
 }
+
+.leaflet-marker-icon{
+  background-color: transparent;
+}
+
 </style>
